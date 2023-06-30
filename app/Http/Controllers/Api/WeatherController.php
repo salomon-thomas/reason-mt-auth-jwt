@@ -17,7 +17,7 @@ class WeatherController extends Controller
             'longitude' => ['required', new Longitude],
         ]);
         // Make a request to the weather API
-        $response = Http::get('http://api.weatherapi.com/v1/current.json?key=b30d96cd70be4e8cb82110310233006&q='.$validatedData['latitude'].','.$validatedData['longitude'].'&aqi=no');
+        $response = Http::get('http://api.weatherapi.com/v1/current.json?key='.env('WEATHER_KEY').'&q='.$validatedData['latitude'].','.$validatedData['longitude'].'&aqi=no');
 
         return response()->json($response->json(), $response->status());
     }
