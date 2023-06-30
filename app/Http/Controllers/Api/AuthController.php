@@ -44,7 +44,7 @@ class AuthController extends Controller
             // Generate JWT token
             $token = JWTAuth::fromUser($user);
             DB::commit();
-            return response()->json(['token' => $token], 201);
+            return response()->json([ 'message' => 'User registered successfully.','token' => $token], 201);
         } catch (JWTException $e) {
             DB::rollBack();
             return response()->json(['message' => 'Failed to generate token'], 500);
